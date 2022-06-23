@@ -52,7 +52,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: app/node_modules
-          key: ${{ hashFiles('package.json') }}
+          key: ${{ hashFiles('app/package.json') }}
       - name: yarn install and build
         run: |
           cd app/
