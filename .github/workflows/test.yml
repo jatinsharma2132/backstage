@@ -52,7 +52,10 @@ jobs:
         uses: actions/cache@v2
         with:
           path: app/node_modules
-          key: ${{ hashFiles('app/package.json') }}
+          key: npm-build-${{ hashFiles('app/package-lock.json') }}
+          restore-keys: |
+            npm-build-
+            npm-
       - name: yarn install and build
         run: |
           cd app/
