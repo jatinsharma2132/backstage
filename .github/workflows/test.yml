@@ -67,9 +67,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-folder
-          path: |
-            app/packages/backend/dist/skeleton.tar.gz
-            app/packages/backend/dist/bundle.tar.gz
+          path: app/packages/backend/dist
           if-no-files-found: error
 
   build-and-pushs:
@@ -88,14 +86,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: app-folder
-          path: |
-            app/packages/backend/dist/skeleton.tar.gz
-            app/packages/backend/dist/bundle.tar.gz
+          path: app/packages/backend/dist
       - name: verify artifacts before
-        run: ls -lRa
-      - name: move artifacts to dist folder
-        run: mv skeleton.tar.gz bundle.tar.gz app/packages/backend/dist/
-      - name: verify artifacts after
         run: ls -lRa app/packages/backend/dist
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
